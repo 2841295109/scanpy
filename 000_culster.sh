@@ -13,10 +13,10 @@ cd samples
 for tar_file in *.tar; do
 	echo " 处理：$tar_file"
 	gsm_list=$(tar -tf "$tar_file" | grep -o 'GSM[0-9]*' | sort -u)
-	tar -xf "$tar_file"
 	for gsm in $gsm_list; do 
     	echo "  创建文件夹: $gsm"
     	mkdir -p "$gsm"
+		tar -xf "$tar_file" --wildcards "*${gsm}*" --wildcards "*${gsm}*"
 		for f in GSM*.{tsv.gz,mtx.gz}; do
    			gsm_dir=${f%%_*}
       		mv $f $gsm_dir
