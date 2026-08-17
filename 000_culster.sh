@@ -18,8 +18,8 @@ for tar_file in *.tar; do
     	echo "  创建文件夹: $gsm"
     	mkdir -p "$gsm"
 		for f in GSM*.{tsv.gz,mtx.gz}; do
-   			gsm=${f%%_*}
-      		mv $f $gsm
+   			gsm_dir=${f%%_*}
+      		mv $f $gsm_dir
     	done
 	done
 done
