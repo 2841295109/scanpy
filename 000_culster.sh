@@ -17,10 +17,9 @@ for tar_file in *.tar; do
   for gsm in $gsm_list; do 
     echo "  创建文件夹: $gsm"
     mkdir -p "$gsm"
-    for f in ${gsm}_*.tsv.gz ${gsm}_*.mtx.gz; do
-      if [ -f "$f" ]; then
-        mv -v "$f" "$gsm/"
-      fi
+	for f in GSM*.{tsv.gz,mtx.gz}; do
+   		gsm=${f%%_*}
+      	mv $f $gsm
     done
   done
 done
