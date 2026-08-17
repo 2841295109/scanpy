@@ -11,17 +11,17 @@ cd samples
 
 #创建子目录
 for tar_file in *.tar; do
-  echo " 处理：$tar_file"
-  gsm_list=$(tar -tf "$tar_file" | grep -o 'GSM[0-9]*' | sort -u)
-  tar -xf "$tar_file"
-  for gsm in $gsm_list; do 
-    echo "  创建文件夹: $gsm"
-    mkdir -p "$gsm"
-	for f in GSM*.{tsv.gz,mtx.gz}; do
-   		gsm=${f%%_*}
-      	mv $f $gsm
-    done
-  done
+	echo " 处理：$tar_file"
+	gsm_list=$(tar -tf "$tar_file" | grep -o 'GSM[0-9]*' | sort -u)
+	tar -xf "$tar_file"
+	for gsm in $gsm_list; do 
+    	echo "  创建文件夹: $gsm"
+    	mkdir -p "$gsm"
+		for f in GSM*.{tsv.gz,mtx.gz}; do
+   			gsm=${f%%_*}
+      		mv $f $gsm
+    	done
+	done
 done
 
 for dir in GSM*/; do
