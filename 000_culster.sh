@@ -25,6 +25,15 @@ for tar_file in *.tar; do
   done
 done
 
+for dir in GSM*/; do
+	cd $dir
+	mv -v *barcodes*.tsv.gz barcodes.tsv.gz
+	mv -v *features*.tsv.gz features.tsv.gz
+	mv -v *matrix*.mtx.gz matrix.mtx.gz
+	echo "$dir 重命名已完成。"
+	cd ..
+done
 
+echo "所有文件重命名完成！"
   
 
