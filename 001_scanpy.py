@@ -86,7 +86,6 @@ print(adata.obs['total_counts'].describe())
 upper_limit = adata.obs['total_counts'].quantile(0.95)
 print(f"过滤阈值: {upper_limit}")
 adata = adata[adata.obs.total_counts < upper_limit, :]
-
 print(adata)
 
 #绘制小提琴图（QC 后）
@@ -160,10 +159,10 @@ sc.pl.embedding(adata, basis='X_pca_harmony', color='CST3', save='_pca_after_har
 sc.pl.embedding(adata, basis='X_pca_harmony', color='sample', save='_pca_after_harmony_sample.png')
 
 # 绘制方差解释率
-sc.pl.pca_variance_ratio(adata, n_pcs=40, log=True, save='_pca_after_harmony_variance_ratio.png')
-cumsum = np.cumsum(adata.uns['pca']['variance_ratio'])
-n_pcs = np.argmax(cumsum >= 0.9) + 1
-print(f"达到 90% 累积方差解释率需要 {n_pcs} 个主成分")
+#sc.pl.pca_variance_ratio(adata, n_pcs=40, log=True, save='_pca_after_harmony_variance_ratio.png')
+#cumsum = np.cumsum(adata.uns['pca']['variance_ratio'])
+#n_pcs = np.argmax(cumsum >= 0.9) + 1
+#print(f"达到 90% 累积方差解释率需要 {n_pcs} 个主成分")
 
 # 将每个基因缩放到单位方差。阈值超过标准偏差 10。
 sc.pp.scale(adata, max_value=10)
